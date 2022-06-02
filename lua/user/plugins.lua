@@ -58,6 +58,19 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
+  use "phaazon/hop.nvim"
+  use "norcalli/nvim-colorizer.lua"
+  use "p00f/nvim-ts-rainbow"
+  -- match-up is a plugin that lets you highlight, navigate, and operate on sets
+  -- of matching text. It extends vim's % key to language-specific words instead of
+  --just single characters.
+  use "andymass/vim-matchup"
+  use "karb94/neoscroll.nvim"
+  use "nacro90/numb.nvim"
+  use "tversteeg/registers.nvim"
+  use "filipdutescu/renamer.nvim"
+  use "Shatur/neovim-session-manager"
+  use "tpope/vim-surround"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -81,6 +94,9 @@ return packer.startup(function(use)
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  -- CocNeovim
+--  use {'neoclide/coc.nvim', branch = 'release'}
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
@@ -93,6 +109,17 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+
+  -- Neo-Tree
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = { 
+        "nvim-lua/plenary.nvim",
+        "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      }
+    }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
