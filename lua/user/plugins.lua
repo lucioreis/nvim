@@ -71,6 +71,7 @@ return packer.startup(function(use)
   use "filipdutescu/renamer.nvim"
   use "Shatur/neovim-session-manager"
   use "tpope/vim-surround"
+  use {'stevearc/dressing.nvim'}
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

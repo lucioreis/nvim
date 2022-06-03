@@ -46,7 +46,9 @@ telescope.setup {
 
       n = {
         ["<esc>"] = actions.close,
+        ["q"] = actions.close,
         ["<CR>"] = actions.select_default,
+        ["o"] = actions.select_default,
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
@@ -85,6 +87,9 @@ telescope.setup {
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    find_files = {
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    },
   },
   extensions = {
     -- Your extension configuration goes here:

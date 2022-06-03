@@ -3,8 +3,8 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -18,8 +18,10 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "ç", "$", opts)
-keymap("i", "ç", "$", opts)
+-- Get help for word under cursor
+keymap({"n", "v", "i"}, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
+
+keymap({"n", "i"}, "ç", "$", opts)
 
 -- Normal --
 -- Press Enter to save
@@ -49,15 +51,15 @@ keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==g", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==g", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Keep cursor on current position on line joins
 keymap("n", "J", "mzJ`z", opts)
 
 -- keep the cursor on vertical center
-keymap("n", "n", "nzzzv", opts) 
-keymap("n", "N", "Nzzzv", opts) 
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -68,10 +70,10 @@ keymap("i", "kj", "<ESC>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+
+keymap("v", "<A-j>", ":m .+1<CR>==gv", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==gv", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
@@ -90,15 +92,16 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Custom
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
+
 keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
-keymap(
-  "n",
-  "<C-p>",
-  "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-  opts
-)
+keymap("n", "<C-p>", function()
+  require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})
+  end
+, opts)
+
 keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
+
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 
 -- Hop.Nvim --
