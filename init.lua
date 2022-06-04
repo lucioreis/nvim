@@ -31,5 +31,7 @@ require "user.renamer"
 require "user.session-manager"
 require "user.surround"
 require "user.dressing"
+require "user.dap"
+require "user.elixir"
 --in case need to remember how to get filetype
 --vim.bo.filetype

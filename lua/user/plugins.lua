@@ -95,8 +95,11 @@ return packer.startup(function(use)
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  -- CocNeovim
---  use {'neoclide/coc.nvim', branch = 'release'}
+  -- DAP
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "nvim-telescope/telescope-dap.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -121,6 +124,9 @@ return packer.startup(function(use)
         "MunifTanjim/nui.nvim",
       }
     }
+
+  -- Elixir
+  use({ "mhanberg/elixir.nvim", requires = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim" }})
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

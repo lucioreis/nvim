@@ -133,7 +133,7 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
+      "<cmd>Telescope diagnostics<cr>",
       "Document Diagnostics",
     },
     w = {
@@ -182,6 +182,16 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+  d = {
+    name = "Debugger",
+    b = {"<cmd> DapToggleBreakpoint<CR>", "Toggle Breakpoint"},
+    B = {"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Conditional Breakpoint: '))<CR>", "Conditional Breakpoint"},
+    l = {"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('log reakppoint: ')<CR>", "Log Breakpoint"},
+    c = {"<cmd>lua require'dap'.continue()<CR>", "Continue"},
+    i = {"<cmd>lua require'dap'setep_into()<CR>","Step Into"},
+    o = {"<cmd>lua require'dap'setep_out()<CR>","Step Out"},
+    n = {"<cmd>lua require'dap'setep_over()<CR>","Step Over"},
+  }
 }
 
 which_key.setup(setup)
