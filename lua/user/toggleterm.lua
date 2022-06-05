@@ -59,7 +59,7 @@ function _NCDU_TOGGLE()
 	ncdu:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true })
+local htop = Terminal:new({ cmd = "btop", hidden = true })
 
 function _HTOP_TOGGLE()
 	htop:toggle()

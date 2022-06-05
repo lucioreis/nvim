@@ -23,13 +23,18 @@ end)
 require("nvim-dap-virtual-text").setup()
 require("dapui").setup()
 
-local ok, dapui = pcall(require, "dapui")
-if ok then
+local status_dapui, dapui = pcall(require, "dapui")
+if status_dapui then
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
 	end
 
 	dap.listeners.before.event_terminated["dapui_config"] = function()
+		dapui.close()
+	end
+  
+
+	dap.listeners.after.event_terminated["dapui_config"] = function()
 		dapui.close()
 	end
 

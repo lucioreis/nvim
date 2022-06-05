@@ -20,6 +20,18 @@ vim.g.maplocalleader = " "
 
 -- Get help for word under cursor
 keymap({"n", "v", "i"}, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
+keymap({"n", "v", "i"}, "<S-F1>", "<ESC><cmd>Telescope help_tags<CR>", opts)
+keymap(
+  {"n", "v", "i"},
+  "<S-F1>",
+  function()
+    require('telescope.builtin').help_tags(require('telescope.themes').get_cursor{previewer = false})
+  end,
+  opts)
+
+
+
+
 
 keymap({"n", "i"}, "ç", "$", opts)
 
@@ -71,7 +83,6 @@ keymap("i", "kj", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 -- Move text up and down
-
 keymap("v", "<A-j>", ":m .+1<CR>==gv", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==gv", opts)
 keymap("v", "p", '"_dP', opts)

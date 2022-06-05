@@ -34,6 +34,8 @@ local options = {
   sidescrolloff = 8,
   guifont = "Fira Code:h14",               -- the font used in graphical neovim applications
   laststatus = 3,
+  spelllang = "en",
+  spell = false
 }
 
 vim.opt.shortmess:append "c"
@@ -41,6 +43,7 @@ vim.opt.shortmess:append "c"
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]

@@ -36,14 +36,30 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
+  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  --   border = "rounded",
+  -- })
+  local completer = vim.lsp.handlers["textDocument/hover"]
+  
+
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+    border = "rounded"
   })
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-end
+
+  -- local definer = vim.lsp.handlers["textDocument/definition"]
+  -- vim.lsp.handlers["textDocument/definition"] = vim.lsp.with(
+  --   function (err, result, ctx, conf)
+  --     print(vim.inspect(result))
+  --     definer(err, result, ctx, conf)
+  --   end, {
+  --   border = "rounded",
+  -- })
+
+end -- M.setup
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
@@ -52,8 +68,9 @@ local function lsp_highlight_document(client)
       return
     end
     illuminate.on_attach(client)
-  -- end
 end
+
+
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true, buffer=bufnr}
@@ -79,7 +96,7 @@ M.on_attach = function(client, bufnr)
 -- vim.notify(client.name .. " starting...")
 -- TODO: refactor this into a method that checks if string in list
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
   end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
@@ -93,5 +110,9 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+-- vim.lsp.handlers["textDocument/completion"] = vim.lsp.with(function(...)
+--   print("ITs working")
+--   -- completer(...)
+-- end, {})
 
 return M
