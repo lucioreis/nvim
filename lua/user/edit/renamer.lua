@@ -4,12 +4,16 @@ if not status_ok then
 end
 
 local opts = {
-  noremap = true,
-  silent = true
+	noremap = true,
+	silent = true,
 }
 
-vim.keymap.set("n", "<F2>", function() require("renamer").rename({empty = true}) end, opts)
-vim.keymap.set("i", "<F2>", function() require("renamer").rename({empty = true}) end, opts)
+vim.keymap.set("n", "<F2>", function()
+	renamer.rename({ empty = true })
+end, opts)
+vim.keymap.set("i", "<F2>", function()
+	renamer.rename({ empty = true })
+end, opts)
 
 local mappings_utils = require("renamer.mappings.utils")
 renamer.setup({

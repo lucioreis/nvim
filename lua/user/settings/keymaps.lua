@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
 
 -- Shorten function name
 -- local keymap = vim.api.nvim_set_keymap
@@ -113,6 +112,13 @@ keymap("n", "<C-p>", function()
   end
 , opts)
 
+
+keymap(
+  "n",
+  "<F6>",
+  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
+  opts
+)
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)

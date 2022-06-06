@@ -1,39 +1,29 @@
-require "user.impatient"
-require "user.keymaps"
-require "user.options"
-require "user.colorscheme"
-require "user.plugins"
-require "user.cmp"
-require "user.treesitter"
-require "user.telescope"
-require "user.lsp"
-require "user.comment"
-require "user.autopairs"
-require "user.nvim-tree"
-require "user.gitsigns"
-require "user.bufferline"
-require "user.toggleterm"
-require "user.neo-tree"
-require "user.lualine"
-require "user.project"
-require "user.indentline"
-require "user.alpha"
-require "user.whichkey"
-require "user.autocommands"
-require "user.hop"
-require "user.colorizer"
-require "user.tsrainbow"
-require "user.matchup"
-require "user.neoscroll"
-require "user.numb"
-require "user.registers"
-require "user.renamer"
-require "user.session-manager"
-require "user.surround"
-require "user.dressing"
-require "user.dap"
---require "user.coq"
--- require "user.elixir"
+require("user")
 -- --in case need to remember how to get filetype
 --vim.bo.filetype
-
+-- local create_little_window = function(messages)
+--   local msg_lines = #messages
+--
+--   local msg_width = 0
+--   for _, v in ipairs(messages) do
+--     msg_width = math.max(msg_width, #v + 1)
+--   end
+--
+--   local ui = vim.api.nvim_list_uis()[1]
+--   local ui_width = ui.width
+--
+--   local win_height = math.min(50, msg_lines)
+--   local win_width = math.min(150, msg_width) + 5
+--
+--   return vim.api.nvim_open_win(bufnr, false, {
+--     relative = "editor",
+--     style = "minimal",
+--     height = win_height,
+--     width = win_width,
+--     -- row = ui_height - win_height - 10,
+--     row = 1,
+--     col = ui_width - win_width - 2,
+--   })
+-- end
+--
+-- local win = create_little_window({"Comecou!"})
