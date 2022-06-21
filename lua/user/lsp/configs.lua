@@ -12,6 +12,7 @@ local servers = {
   "tailwindcss",
 	"html",
 	"tsserver",
+  "cssls",
 }
 
 lsp_installer.setup({

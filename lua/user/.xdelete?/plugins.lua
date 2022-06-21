@@ -72,7 +72,6 @@ return packer.startup(function(use)
 	use("Shatur/neovim-session-manager")
 	use("tpope/vim-surround")
 	use({ "stevearc/dressing.nvim" })
-	use("matbme/JABS.nvim")
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -85,7 +84,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
+  use("hrsh7th/cmp-nvim-lua")
 
 	-- main one
 	use({ "ms-jpq/coq_nvim", branch = "coq" })

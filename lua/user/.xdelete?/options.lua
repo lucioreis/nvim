@@ -31,7 +31,7 @@ local options = {
   relativenumber = true,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
-  wrap = false,                            -- display lines as one long line
+  wrap = true,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "Fira Code:h14",               -- the font used in graphical neovim applications
@@ -58,36 +58,6 @@ opt.relativenumber = false
 for k, v in pairs(options) do
   opt[k] = v
 end
-
-local g = {
-  do_filetype_lua = 1, -- use filetype.lua
-  did_load_filetypes = 0, -- don't use filetype.vim
-  highlighturl_enabled = true, -- highlight URLs by default
-  mapleader = " ", -- set leader key
-  zipPlugin = false, -- disable zip
-  load_black = false, -- disable black
-  loaded_2html_plugin = true, -- disable 2html
-  loaded_getscript = true, -- disable getscript
-  loaded_getscriptPlugin = true, -- disable getscript
-  loaded_gzip = true, -- disable gzip
-  loaded_logipat = true, -- disable logipat
-  loaded_matchit = true, -- disable matchit
-  loaded_netrwFileHandlers = true, -- disable netrw
-  loaded_netrwPlugin = true, -- disable netrw
-  loaded_netrwSettngs = true, -- disable netrw
-  loaded_remote_plugins = true, -- disable remote plugins
-  loaded_tar = true, -- disable tar
-  loaded_tarPlugin = true, -- disable tar
-  loaded_zip = true, -- disable zip
-  loaded_zipPlugin = true, -- disable zip
-  loaded_vimball = true, -- disable vimball
-  loaded_vimballPlugin = true, -- disable vimball
-}
-
-for key, value in pairs(g) do
-  vim.g[key] = value
-end
-
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]

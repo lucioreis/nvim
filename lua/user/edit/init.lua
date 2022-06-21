@@ -1,8 +1,0 @@
-require("user.edit.treesitter")
-require("user.edit.cmp")
-require("user.edit.comment")
--- require("user.edit.coq")
-require("user.edit.registers")
-require("user.edit.renamer")
-require("user.edit.autopairs")
-require("user.edit.surround")

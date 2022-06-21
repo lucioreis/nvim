@@ -1,7 +1,0 @@
-require("user.appearance.colorscheme")
-require("user.appearance.lualine")
-require("user.appearance.indentline")
-require("user.appearance.colorizer")
-require("user.appearance.tsrainbow")
-require("user.appearance.dressing")
-require("user.appearance.matchup")

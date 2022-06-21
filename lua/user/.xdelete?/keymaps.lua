@@ -1,4 +1,5 @@
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
+
 
 -- Shorten function name
 -- local keymap = vim.api.nvim_set_keymap
@@ -104,7 +105,7 @@ keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 
 keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
-keymap({"n", "i"}, "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending<CR>", opts)
+keymap({"n", "i"}, "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opts)
 
 keymap("n", "<C-p>", function()
   require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})
@@ -127,7 +128,5 @@ keymap("n", "s", ":HopWord<CR>", opts)
 keymap("n", "S", ":HopChar1<CR>", opts)
 
 -- NeoTree --
-keymap("n", "=", ":NeoTreeFloatToggle<CR>", opts)
-
--- JABS
-keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
+keymap("", "-", "<Nop>", opts)
+keymap("n", "-", ":NeoTreeFloatToggle<CR>", opts)

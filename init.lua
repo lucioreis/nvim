@@ -1,4 +1,58 @@
-require("user")
+local ok, impatient = pcall(require, "imapatient")
+if ok then
+  impatient.enable_profile()
+end
+
+require("user.settings.options")
+
+--Appearance
+require("user.appearance.colorizer")
+require("user.appearance.colorscheme")
+require("user.appearance.dressing")
+require("user.appearance.indentline")
+require("user.appearance.lualine")
+require("user.appearance.matchup")
+require("user.appearance.tsrainbow")
+
+--Commands
+require("user.commands.autocommands")
+
+--Debugger
+require("user.debugger.dap")
+
+--Edit
+require("user.edit.autopairs")
+require("user.edit.cmp")
+require("user.edit.comment")
+-- require("user.edit.coq")
+require("user.edit.registers")
+require("user.edit.renamer")
+require("user.edit.surround")
+require("user.edit.treesitter")
+
+--GIT
+require("user.git.gitsigns")
+
+--LSP
+require("user.lsp")
+
+--NAVIGATION
+require("user.navigation.alpha")
+require("user.navigation.bufferline")
+require("user.navigation.hop")
+require("user.navigation.jabs")
+require("user.navigation.neo-tree")
+require("user.navigation.neoscroll")
+require("user.navigation.numb")
+require("user.navigation.nvim-tree")
+require("user.navigation.project")
+require("user.navigation.telescope")
+
+--SETTINGS
+require("user.settings.keymaps")
+require("user.settings.whichkey")
+
+
 -- --in case need to remember how to get filetype
 --vim.bo.filetype
 -- local create_little_window = function(messages)
