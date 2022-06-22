@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 -- local keymap = vim.api.nvim_set_keymap
@@ -17,21 +17,13 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Get help for word under cursor
-keymap({"n", "v", "i"}, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
-keymap({"n", "v", "i"}, "<S-F1>", "<ESC><cmd>Telescope help_tags<CR>", opts)
-keymap(
-  {"n", "v", "i"},
-  "<S-F1>",
-  function()
-    require('telescope.builtin').help_tags(require('telescope.themes').get_cursor{previewer = false})
-  end,
-  opts)
+keymap({ "n", "v", "i" }, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
+keymap({ "n", "v", "i" }, "<S-F1>", "<ESC><cmd>Telescope help_tags<CR>", opts)
+keymap({ "n", "v", "i" }, "<S-F1>", function()
+	require("telescope.builtin").help_tags(require("telescope.themes").get_cursor({ previewer = false }))
+end, opts)
 
-
-
-
-
-keymap({"n", "i"}, "ç", "$", opts)
+keymap({ "n", "i" }, "ç", "$", opts)
 
 -- Normal --
 -- Press Enter to save
@@ -104,19 +96,22 @@ keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 
 keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
-keymap({"n", "i"}, "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending<CR>", opts)
+keymap(
+	{ "n", "i" },
+	"<C-f>",
+	"<cmd>Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending<CR>",
+	opts
+)
 
 keymap("n", "<C-p>", function()
-  require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})
-  end
-, opts)
-
+	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
+end, opts)
 
 keymap(
-  "n",
-  "<F6>",
-  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
-  opts
+	"n",
+	"<F6>",
+	[[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
+	opts
 )
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 
@@ -125,9 +120,15 @@ keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>')
 -- Hop.Nvim --
 keymap("n", "s", ":HopWord<CR>", opts)
 keymap("n", "S", ":HopChar1<CR>", opts)
+keymap("n", "f", "<cmd>HopChar1CurrentLineAC<CR>", opts)
 
 -- NeoTree --
 keymap("n", "=", ":NeoTreeFloatToggle<CR>", opts)
 
 -- JABS
-keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
+-- keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
+keymap("n", "-", function()
+	require("telescope.builtin").buffers(
+		require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" })
+	)
+end)

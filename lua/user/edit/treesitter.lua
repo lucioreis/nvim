@@ -20,4 +20,8 @@ configs.setup {
     enable = true,
     enable_autocmd = false,
   },
+  autotag = {
+    enable = true,
+    filetypes = {"html", "heex", "xml"}
+  }
 }

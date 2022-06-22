@@ -1,5 +1,0 @@
--- require("user.settings.elixir")
-require("user.settings.plugins")
-require("user.settings.session-manager")
-require("user.settings.toggleterm")
-require("user.settings.whichkey")

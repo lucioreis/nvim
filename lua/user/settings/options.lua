@@ -82,6 +82,7 @@ local g = {
   loaded_zipPlugin = true, -- disable zip
   loaded_vimball = true, -- disable vimball
   loaded_vimballPlugin = true, -- disable vimball
+  Illuminate_delay = 500, -- define Illuminate highlight delay(milliseconds)
 }
 
 for key, value in pairs(g) do

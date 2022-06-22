@@ -29,6 +29,7 @@ require("user.edit.registers")
 require("user.edit.renamer")
 require("user.edit.surround")
 require("user.edit.treesitter")
+require("user.edit.autotag")
 
 --GIT
 require("user.git.gitsigns")
@@ -38,23 +39,25 @@ require("user.lsp")
 
 --NAVIGATION
 require("user.navigation.alpha")
-require("user.navigation.bufferline")
+-- require("user.navigation.bufferline")
 require("user.navigation.hop")
-require("user.navigation.jabs")
+-- require("user.navigation.jabs") -- Just another buffer switch
 require("user.navigation.neo-tree")
 require("user.navigation.neoscroll")
-require("user.navigation.numb")
+require("user.navigation.numb") -- Peek lines in a non-obtrusive way
 require("user.navigation.nvim-tree")
 require("user.navigation.project")
 require("user.navigation.telescope")
 
 --SETTINGS
+require("user.settings.plugins")
+require("user.settings.session-manager")
+require("user.settings.toggleterm")
 require("user.settings.keymaps")
 require("user.settings.whichkey")
 
-
 -- --in case need to remember how to get filetype
---vim.bo.filetype
+--lua =vim.bo.filetype
 -- local create_little_window = function(messages)
 --   local msg_lines = #messages
 --
@@ -81,3 +84,14 @@ require("user.settings.whichkey")
 -- end
 --
 -- local win = create_little_window({"Comecou!"})
+--
+-- require("nvim-ts-autotag").setup{
+--   enable = true,
+--   filetypes = {"heex"}
+-- }
+-- require'nvim-treesitter.configs'.setup {
+--   autotag = {
+--     enable = true,
+--     filetypes = { "heex"},
+--   }
+-- }
