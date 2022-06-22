@@ -3,11 +3,34 @@ if not status_ok then
 	return
 end
 
-
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
+local mode_color = {
+	n = "#569cd6",
+	i = "#6a9955",
+	v = "#c586c0",
+	[""] = "#c586c0",
+	V = "#c586c0",
+	-- c = '#B5CEA8',
+	-- c = '#D7BA7D',
+	c = "#4EC9B0",
+	no = "#569cd6",
+	s = "#ce9178",
+	S = "#ce9178",
+	[""] = "#ce9178",
+	ic = "#dcdcaa",
+	R = "#d16969",
+	Rv = "#d16969",
+	cv = "#569cd6",
+	ce = "#569cd6",
+	r = "#d16969",
+	rm = "#4EC9B0",
+	["r?"] = "#4EC9B0",
+	["!"] = "#4EC9B0",
+	t = "#D7BA7D",
+}
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
@@ -22,14 +45,34 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
+
+
+-- local mode_beam = {
+--   -- mode component
+--   function()
+--     return "▊"
+--   end,
+--   color = function()
+--     -- auto change color according to neovims mode
+--     return { fg = mode_color[vim.fn.mode()] }
+--   end,
+--   -- padding = { right = 1 },
+--   padding = 0,
+-- }
 
 local mode = {
 	"mode",
 	fmt = function(str)
 		return "-- " .. str .. " --"
 	end,
+  -- color = function ()
+  --   return {
+  --     bg = mode_color[vim.fn.mode()],
+  --     fg = "#000000"
+  --   }
+  -- end
 }
 
 local filetype = {
@@ -73,11 +116,11 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
+		lualine_a = {branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {
-      "filename",
-    },
+			"filename",
+		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
