@@ -13,6 +13,7 @@ local servers = {
 	"html",
 	"tsserver",
   "cssls",
+  "graphql"
 }
 
 lsp_installer.setup({

@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local opts = { silent = true }
 
 -- Shorten function name
 -- local keymap = vim.api.nvim_set_keymap
@@ -23,7 +23,6 @@ keymap({ "n", "v", "i" }, "<S-F1>", function()
 	require("telescope.builtin").help_tags(require("telescope.themes").get_cursor({ previewer = false }))
 end, opts)
 
-keymap({ "n", "i" }, "ç", "$", opts)
 
 -- Normal --
 -- Press Enter to save
@@ -53,8 +52,8 @@ keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gn", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gn", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
 
 -- Keep cursor on current position on line joins
 keymap("n", "J", "mzJ`z", opts)
@@ -124,6 +123,7 @@ keymap("n", "f", "<cmd>HopChar1CurrentLineAC<CR>", opts)
 
 -- NeoTree --
 keymap("n", "=", ":NeoTreeFloatToggle<CR>", opts)
+keymap("n", "<leader>b", "<CMD>Neotree toggle buffers<CR>", opts)
 
 -- JABS
 -- keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
@@ -132,3 +132,12 @@ keymap("n", "-", function()
 		require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" })
 	)
 end)
+
+-- Bookmarks
+keymap("n", "mm", "<CMD>BookmarkToggle<CR>", opts)
+keymap("n", "mk", "<CMD>BookmarkNext<CR>", opts)
+keymap("n", "mj", "<CMD>BookmarkPrev<CR>", opts)
+keymap("n", "ma", "<CMD>BookmarkShowAll<CR>", opts)
+keymap("n", "mc", "<CMD>BookmarkClear<CR>", opts)
+keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts)
+

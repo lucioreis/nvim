@@ -97,7 +97,7 @@ return packer.startup(function(use)
 	use({ "williamboman/nvim-lsp-installer", commit = "5a0bf929eefad999e92963ee227c23a804cf0788" }) -- simple to use language server installer
 	use({ "tamago324/nlsp-settings.nvim", commit = "70eb4c351f0d4f6c19fbfc50aab680baf61c81b6" }) -- language server settings defined in json for
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "17dd2c95a7412e97bf9752a5a5cca95581baf361" }) -- for formatters and linters
-  use { "ray-x/lsp_signature.nvim", commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9" }
+	use({ "ray-x/lsp_signature.nvim", commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9" })
 
 	-- DAP
 	use({ "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" })
@@ -142,6 +142,14 @@ return packer.startup(function(use)
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
 		commit = "a864a79c8e024d4f5d95915210188c9c3430b160",
+	})
+
+	use("MattesGroeger/vim-bookmarks")
+
+	use({
+		"crusj/bookmarks.nvim",
+		branch = "main",
+		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim

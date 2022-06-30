@@ -3,12 +3,23 @@ local augroup = vim.api.nvim_create_augroup
 
 local _general_settings = vim.api.nvim_create_augroup("_general_settings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "fzf" },
+	pattern = { "qf", "help", "man", "lspinfo", "fzf", "bookmarks", "toggleterm" },
 	callback = function()
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { noremap = true, silent = true, buffer = 0 })
 	end,
 	group = _general_settings,
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "NvimTree" },
+--   callback = function()
+--     local ok, _ = pcall(require, "neo-tree")
+--     if ok then
+--       vim.cmd "<cmd>NeoTreeClose<cr>"
+--     end
+--   end,
+-- 	group = _general_settings,
+-- })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -18,7 +29,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
-	command = "set formatoptions-=cro",
+	callback = function()
+		vim.opt.formatoptions = vim.opt.formatoptions
+			- "a" -- turn off auto formatting of paragraphs
+			- "t" -- Auto-wrap text using 'textwidth': nope
+			+ "c" -- Auto-wrap comments using 'textwidtAuto-wrap comments using 'textwidth': nope
+			+ "r" -- keep the comments going on enter
+			- "o" -- Autpmatically insert the coment leader after hitting o: nope
+			+ "n" -- Make ident lists great again
+			- "2" -- I could'n care less
+			+ "1" -- Don't brake a line after a one-letter word
+			+ "p" -- Don't break 'Mr.' and 'Feyman!'
+			+ "q"
+		vim.opt.showtabline = 0
+	end,
 	group = _general_settings,
 })
 

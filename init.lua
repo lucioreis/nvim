@@ -48,6 +48,7 @@ require("user.navigation.numb") -- Peek lines in a non-obtrusive way
 require("user.navigation.nvim-tree")
 require("user.navigation.project")
 require("user.navigation.telescope")
+require("user.navigation.bookmarks")
 
 --SETTINGS
 require("user.settings.plugins")
@@ -57,6 +58,7 @@ require("user.settings.keymaps")
 require("user.settings.whichkey")
 
 -- --in case need to remember how to get filetype
+
 --lua =vim.bo.filetype
 -- local create_little_window = function(messages)
 --   local msg_lines = #messages

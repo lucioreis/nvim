@@ -25,6 +25,7 @@ autotag.setup({
 		"glimmer",
 		"handlebars",
 		"hbs",
+    "tsx"
 	},
 	skip_tags = {
 		"area",

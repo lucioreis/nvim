@@ -19,10 +19,10 @@ local config = {
   -- Configurtaion of floating window is done in the individual source sections.
   -- "NC" is a special style that works well with NormalNC set
   close_floats_on_escape_key = true,
-  default_source = "filesystem",
+  default_source = "buffers",
   enable_diagnostics = true,
   enable_git_status = true,
-  enable_modified_markers = true, -- Show markers for files with unsaved changes.
+  enable_modified_markers = false, -- Show markers for files with unsaved changes.
   enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
   git_status_async = true,
   -- These options are for people with VERY large git repos
@@ -43,7 +43,7 @@ local config = {
   use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
   use_default_mappings = true,
   --
-  --event_handlers = {
+  event_handlers = {
   --  {
   --    event = "before_render",
   --    handler = function (state)
@@ -78,26 +78,26 @@ local config = {
   --      print(args.source, " moved to ", args.destination)
   --    end
   --  },
-  --  {
-  --    event = "neo_tree_buffer_enter",
-  --    handler = function()
-  --      vim.cmd 'highlight! Cursor blend=100'
-  --    end
-  --  },
-  --  {
-  --    event = "neo_tree_buffer_leave",
-  --    handler = function()
-  --      vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
-  --    end
-  --  }
-  --},
+   {
+     event = "neo_tree_buffer_enter",
+     handler = function()
+       vim.cmd 'highlight! Cursor blend=100'
+     end
+   },
+    {
+     event = "neo_tree_buffer_leave",
+     handler = function()
+       vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
+     end
+   }
+  },
   default_component_configs = {
     container = {
       enable_character_fade = false,
     },
     indent = {
       indent_size = 2,
-      padding = 1,
+      padding = 0,
       -- indent guides
       with_markers = true,
       indent_marker = "│",
@@ -110,9 +110,9 @@ local config = {
       expander_highlight = "NeoTreeExpander",
     },
     icon = {
-      folder_closed = " ",
-      folder_open = " ",
-      folder_empty = " ",
+      folder_closed = "",
+      folder_open = "",
+      folder_empty = "",
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = "*",
@@ -122,6 +122,7 @@ local config = {
       symbol = "[M]",
       highlight = "NeoTreeModified",
     },
+
     name = {
       trailing_slash = false,
       use_git_status_colors = true,
@@ -131,10 +132,10 @@ local config = {
       symbols = {
         -- Change type
         added     = "",--"✚", -- NOTE: you can set any of these to an empty string to not show them
-        modified  = "",--"",
+        modified  = " ",
         -- Status type
         conflict  = " ",
-        unstaged  = " ",
+        unstaged  = "", -- ",
         staged    = "S ",
         unmerged  = " ",
         renamed   = "➜ ",
@@ -142,7 +143,7 @@ local config = {
         untracked = "U ",
         ignored   = "◌ ",
       },
-      align = "left",
+      align = "right",
       left_padding = 0,
     },
   },
@@ -213,8 +214,8 @@ local config = {
     width = 30, -- applies to left and right positions
     popup = { -- settings that apply to float position only
       size = {
-        height = "90%",
-        width = "30%",
+        height = "100%",
+        width = "35%",
       },
       position = "50%", -- 50% means center it
       border = "rounded",
