@@ -3,7 +3,7 @@ return {
 	init_options = {
 		userLanguages = {
 			text = "html",
-			elixir = "html",
+			eelixir = "html-heex",
 			heex = "html",
 			eruby = "erb",
 		},

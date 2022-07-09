@@ -133,7 +133,7 @@ local mappings = {
       "<cmd>Telescope diagnostics<cr>",
       "Document Diagnostics",
     },
-    w = {
+    D = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
@@ -148,14 +148,16 @@ local mappings = {
       "<cmd>lua vim.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    l = { "<cmd>lua vim.lsp.codelens.run(0)<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    r = { "<cmd>lua vim.lsp.buf.rename(0)<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    w = {"<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace"},
+    W = {"<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace"},
   },
   s = {
     name = "Search",

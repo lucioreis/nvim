@@ -13,7 +13,8 @@ local servers = {
 	"html",
 	"tsserver",
   "cssls",
-  "graphql"
+  "graphql",
+  "emmet_ls"
 }
 
 lsp_installer.setup({
@@ -26,6 +27,9 @@ for _, server in pairs(servers) do
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
+  if server == "emmet_ls" then
+    opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
+  end
 	if has_custom_opts then
 		opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
 	end

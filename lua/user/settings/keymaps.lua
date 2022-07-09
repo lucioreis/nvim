@@ -4,7 +4,6 @@ local opts = { silent = true }
 -- local keymap = vim.api.nvim_set_keymap
 local keymap = vim.keymap.set
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -20,9 +19,8 @@ vim.g.maplocalleader = " "
 keymap({ "n", "v", "i" }, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
 keymap({ "n", "v", "i" }, "<S-F1>", "<ESC><cmd>Telescope help_tags<CR>", opts)
 keymap({ "n", "v", "i" }, "<S-F1>", function()
-	require("telescope.builtin").help_tags(require("telescope.themes").get_cursor({ previewer = false }))
+	require("telescope.builtin").help_tags(require("telescope.themes").get_dropdown({ previewer = false }))
 end, opts)
-
 
 -- Normal --
 -- Press Enter to save
@@ -45,15 +43,15 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<C-v>", "<C-w>v", opts)
+-- keymap("n", "<C-v>", "<C-w>v", opts)
 
 -- Navigate buffers
 keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>", opts)
 
 -- Keep cursor on current position on line joins
 keymap("n", "J", "mzJ`z", opts)
@@ -102,6 +100,14 @@ keymap(
 	opts
 )
 
+-- keymap({ "n", "i" }, "<C-f>", function()
+--   local word = vim.fn.expand('<cword>')
+-- 	vim.cmd([[Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending starting_mode=normal<CR>]])
+--   vim.schedule(function ()
+--     vim.cmd
+--   end)
+-- end, opts)
+
 keymap("n", "<C-p>", function()
 	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
 end, opts)
@@ -113,6 +119,10 @@ keymap(
 	opts
 )
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
+keymap("n", "[d", vim.diagnostic.goto_prev, opts)
+keymap("n", "]d", vim.diagnostic.goto_prev, opts)
+keymap("n", "[c", "<cmd>cprev<cr>", opts )
+keymap("n", "]c", "<cmd>cnext<cr>", opts )
 
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 
@@ -123,9 +133,15 @@ keymap("n", "f", "<cmd>HopChar1CurrentLineAC<CR>", opts)
 
 -- NeoTree --
 keymap("n", "=", ":NeoTreeFloatToggle<CR>", opts)
-keymap("n", "<leader>b", "<CMD>Neotree toggle buffers<CR>", opts)
+keymap("n", "<leader>b", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+for i = 1, 9, 1 do
+keymap("n", "<M-".. i ..">", "<cmd>lua require('harpoon.ui').nav_file(".. i ..")<cr>", opts)
+  
+end
+keymap("n", "<M-n>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", opts)
+keymap("n", "<M-p>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", opts)
+keymap("n", "<leader>m","<cmd>lua require('harpoon.mark').add_file()<cr>", opts)
 
--- JABS
 -- keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
 keymap("n", "-", function()
 	require("telescope.builtin").buffers(

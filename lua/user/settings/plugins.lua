@@ -62,6 +62,7 @@ return packer.startup(function(use)
 	use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
 	use({ "p00f/nvim-ts-rainbow", commit = "837167f63445821c55e6eed9dbdac1b0b29afa92" })
 	use({ "windwp/nvim-ts-autotag", commit = "0339338316c7e0d62b03191d81cc68ca8101fc02" })
+  use({"ThePrimeagen/harpoon", commit="d3d3d22b6207f46f8ca64946f4d781e975aec0fc"})
 	-- match-up is a plugin that lets you highlight, navigate, and operate on sets
 	-- of matching text. It extends vim's % key to language-specific words instead of
 	--just single characters.

@@ -49,6 +49,7 @@ require("user.navigation.nvim-tree")
 require("user.navigation.project")
 require("user.navigation.telescope")
 require("user.navigation.bookmarks")
+require("user.navigation.harpoon")
 
 --SETTINGS
 require("user.settings.plugins")
