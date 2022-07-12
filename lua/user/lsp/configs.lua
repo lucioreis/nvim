@@ -14,7 +14,8 @@ local servers = {
 	"tsserver",
   "cssls",
   "graphql",
-  "emmet_ls"
+  "emmet_ls",
+  "prismals"
 }
 
 lsp_installer.setup({

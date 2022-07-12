@@ -74,6 +74,7 @@ return packer.startup(function(use)
 	use({ "Shatur/neovim-session-manager", commit = "4f9129a6fd80dc0a5111349bfb447ff243c7d504" })
 	use({ "tpope/vim-surround", commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea" })
 	use({ "stevearc/dressing.nvim", commit = "af179837e1cdddfb164f0296883951b2255c46d2" })
+  use({"simrat39/symbols-outline.nvim", commit="15ae99c27360ab42e931be127d130611375307d5"})
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

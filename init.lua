@@ -39,6 +39,7 @@ require("user.lsp")
 
 --NAVIGATION
 require("user.navigation.alpha")
+require("user.navigation.symbols-outline")
 -- require("user.navigation.bufferline")
 require("user.navigation.hop")
 -- require("user.navigation.jabs") -- Just another buffer switch
