@@ -39,6 +39,7 @@ require("user.lsp")
 
 --NAVIGATION
 require("user.navigation.alpha")
+require("user.navigation.symbols-outline")
 -- require("user.navigation.bufferline")
 require("user.navigation.hop")
 -- require("user.navigation.jabs") -- Just another buffer switch
@@ -50,6 +51,7 @@ require("user.navigation.project")
 require("user.navigation.telescope")
 require("user.navigation.bookmarks")
 require("user.navigation.harpoon")
+require("user.navigation.trouble")
 
 --SETTINGS
 require("user.settings.plugins")

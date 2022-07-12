@@ -74,11 +74,13 @@ return packer.startup(function(use)
 	use({ "Shatur/neovim-session-manager", commit = "4f9129a6fd80dc0a5111349bfb447ff243c7d504" })
 	use({ "tpope/vim-surround", commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea" })
 	use({ "stevearc/dressing.nvim", commit = "af179837e1cdddfb164f0296883951b2255c46d2" })
+  use({"simrat39/symbols-outline.nvim", commit="15ae99c27360ab42e931be127d130611375307d5"})
 
+  use({"folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons", commit="da61737d860ddc12f78e638152834487eabf0ee5"})
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use({ "lunarvim/darkplus.nvim", commit = "fe67a1a1663e65ac4fbd3e9a18874d6990a4f6e5" })
-
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "0e65333c7fdc284d53a489ed2cef7219289ea0fe" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }) -- buffer completions

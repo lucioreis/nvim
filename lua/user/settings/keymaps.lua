@@ -157,3 +157,6 @@ keymap("n", "ma", "<CMD>BookmarkShowAll<CR>", opts)
 keymap("n", "mc", "<CMD>BookmarkClear<CR>", opts)
 keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts)
 
+-- Trouble
+keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
+keymap("n", "trt", "<CMD>TroubleReset<CR>", opts)

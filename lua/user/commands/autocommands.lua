@@ -89,7 +89,6 @@ autocmd("BufUnload", { command = "set showtabline=2", buffer = 0, group = alpha 
 -- 	group = lsp,
 -- })
 
-local f
 vim.cmd([[
   "
   " augroup _auto_resize

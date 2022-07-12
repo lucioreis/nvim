@@ -190,7 +190,8 @@ local mappings = {
     i = {"<cmd>lua require'dap'setep_into()<CR>","Step Into"},
     o = {"<cmd>lua require'dap'setep_out()<CR>","Step Out"},
     n = {"<cmd>lua require'dap'setep_over()<CR>","Step Over"},
-  }
+  },
+  ['o'] = {"<cmd>SymbolsOutline<CR>", "Symbols"}
 }
 
 which_key.setup(setup)
