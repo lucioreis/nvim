@@ -22,6 +22,13 @@ configs.setup {
   },
   autotag = {
     enable = true,
-    filetypes = {"html", "heex", "xml"}
+    filetypes = {"html", "heex", "xml", "typescriptreact"}
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<C-d>',
+      scope_incremental = '<C-d>',
+    }
   }
 }

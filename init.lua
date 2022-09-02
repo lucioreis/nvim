@@ -36,6 +36,11 @@ require("user.git.gitsigns")
 
 --LSP
 require("user.lsp")
+require("user.lsp.mason")
+local saga = require("lspsaga")
+        saga.init_lsp_saga({
+            -- your configuration
+        })
 
 --NAVIGATION
 require("user.navigation.alpha")
@@ -46,10 +51,10 @@ require("user.navigation.hop")
 require("user.navigation.neo-tree")
 require("user.navigation.neoscroll")
 require("user.navigation.numb") -- Peek lines in a non-obtrusive way
-require("user.navigation.nvim-tree")
+--require("user.navigation.nvim-tree")
 require("user.navigation.project")
 require("user.navigation.telescope")
-require("user.navigation.bookmarks")
+--require("user.navigation.bookmarks")
 require("user.navigation.harpoon")
 require("user.navigation.trouble")
 
@@ -59,6 +64,9 @@ require("user.settings.session-manager")
 require("user.settings.toggleterm")
 require("user.settings.keymaps")
 require("user.settings.whichkey")
+
+-- local icons = require "nvim-nonicons"
+-- icons.get("file")
 
 -- --in case need to remember how to get filetype
 

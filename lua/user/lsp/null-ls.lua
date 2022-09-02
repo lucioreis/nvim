@@ -17,7 +17,9 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
     code_actions.gitsigns,
-    diagnostics.credo
+    diagnostics.credo, -- Elixir analyses tool
+    diagnostics.eslint, -- Injects actions to fix ESLint issues or ignore broken rules.
+    diagnostics.tsc, -- Parses diagnostics from the TypeScript compiler.
     -- diagnostics.flake8
 	},
 })

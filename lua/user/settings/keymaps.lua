@@ -121,8 +121,8 @@ keymap(
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 keymap("n", "[d", vim.diagnostic.goto_prev, opts)
 keymap("n", "]d", vim.diagnostic.goto_prev, opts)
-keymap("n", "[c", "<cmd>cprev<cr>", opts )
-keymap("n", "]c", "<cmd>cnext<cr>", opts )
+keymap("n", "[c", "<cmd>cprev<cr>", opts)
+keymap("n", "]c", "<cmd>cnext<cr>", opts)
 
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 
@@ -132,15 +132,14 @@ keymap("n", "S", ":HopChar1<CR>", opts)
 keymap("n", "f", "<cmd>HopChar1CurrentLineAC<CR>", opts)
 
 -- NeoTree --
-keymap("n", "=", ":NeoTreeFloatToggle<CR>", opts)
+keymap("n", "=", ":NeoTreeFloatToggle buffers<CR>", opts)
 keymap("n", "<leader>b", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 for i = 1, 9, 1 do
-keymap("n", "<M-".. i ..">", "<cmd>lua require('harpoon.ui').nav_file(".. i ..")<cr>", opts)
-  
+	keymap("n", "<M-" .. i .. ">", "<cmd>lua require('harpoon.ui').nav_file(" .. i .. ")<cr>", opts)
 end
 keymap("n", "<M-n>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", opts)
 keymap("n", "<M-p>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", opts)
-keymap("n", "<leader>m","<cmd>lua require('harpoon.mark').add_file()<cr>", opts)
+keymap("n", "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts)
 
 -- keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
 keymap("n", "-", function()
@@ -160,3 +159,16 @@ keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts)
 -- Trouble
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
 keymap("n", "trt", "<CMD>TroubleReset<CR>", opts)
+keymap("n", "gr", "<CMD>Trouble lsp_references<CR>", opts)
+
+--Tree Climber
+local is_ok, tree_climber = pcall(require, "tree-climber")
+if is_ok then
+	keymap({ "n", "v", "o" }, "H", tree_climber.goto_parent, opts)
+	keymap({ "n", "v", "o" }, "L", tree_climber.goto_child, opts)
+	keymap({ "n", "v", "o" }, "<C-j>", tree_climber.goto_next, opts)
+	keymap({ "n", "v", "o" }, "<C-k>", tree_climber.goto_prev, opts)
+	keymap({ "v", "o" }, "in", tree_climber.select_node, opts)
+	keymap("n", "<c-k>", tree_climber.swap_prev, opts)
+	keymap("n", "<c-j>", tree_climber.swap_next, opts)
+end

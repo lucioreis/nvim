@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup
 
 local _general_settings = vim.api.nvim_create_augroup("_general_settings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "fzf", "bookmarks", "toggleterm" },
+	pattern = { "DressingSelect", "qf", "help", "man", "lspinfo", "fzf", "bookmarks", "toggleterm" },
 	callback = function()
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { noremap = true, silent = true, buffer = 0 })
 	end,

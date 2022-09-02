@@ -48,6 +48,24 @@ dap.adapters.mix_task = {
 	args = {},
 }
 
+dap.adapters.firefox = {
+  type = "executable",
+  command = "node",
+  args = {os.getenv('HOME') .. '/bin/vscode-firefox-debug/dist/adapter.bundle.js'}
+}
+
+dap.configurations.typescriptreact = {
+{
+  name = 'Debug with Firefox',
+  type = 'firefox',
+  request = 'launch',
+  reAttach = true,
+  url = 'http://localhost:3000/',
+  webRoot = '${workspaceFolder}',
+  firefoxExecutable = '/usr/bin/firefox-developer-edition',
+  }
+}
+
 dap.configurations.elixir = {
 	{
 		type = "mix_task",
@@ -98,7 +116,6 @@ dap.configurations.cpp = {
 }
 
 -- If you want to use this for Rust and C, add something like this:
-
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 

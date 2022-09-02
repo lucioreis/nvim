@@ -36,7 +36,7 @@ local options = {
   sidescrolloff = 8,
   guifont = "Fira Code:h14",               -- the font used in graphical neovim applications
   laststatus = 3,
-  spelllang = "en",
+  -- spelllang = "ptbr",
   spell = false,
   showcmd = true,
 }

@@ -80,8 +80,7 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["n"] = { "<cmd>NeoTreeFocusToggle filesystem<cr>", "Neo Explorer" },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Explorer"},
+  ["e"] = { "<cmd>NeoTreeFocusToggle filesystem<cr>", "Neo Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
