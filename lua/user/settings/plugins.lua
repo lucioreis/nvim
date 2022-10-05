@@ -45,9 +45,7 @@ return packer.startup(function(use)
   use({ "nvim-lua/popup.nvim", commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac" }) -- An implementation of the Popup API from vim in Neovim
   use({ "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" }) -- Useful lua functions used ny lots of plugins
   use({ "windwp/nvim-autopairs", commit = "4a95b3982be7397cd8e1370d1a09503f9b002dbf" }) -- Autopairs, integrates with both cmp and treesitter
-  use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }) -- Easily comment stuff
   use({ "kyazdani42/nvim-web-devicons", commit = "a8cf88cbdb5c58e2b658e179c4b2aa997479b3da" })
-  use({ "akinsho/bufferline.nvim", commit = "88c742f4af988c98aee5ac1c92f056905c636aae" })
   use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
   use({ "nvim-lualine/lualine.nvim", commit = "5113cdb32f9d9588a2b56de6d1df6e33b06a554a" })
   use({ "akinsho/toggleterm.nvim", commit = "8f2e78d0256eba4896c8514aa150e41e63f7d5b2" })
@@ -59,9 +57,10 @@ return packer.startup(function(use)
   use({ "folke/which-key.nvim", commit = "6885b669523ff4238de99a7c653d47b081b5506d" })
   use({ "phaazon/hop.nvim", commit = "a3cf6684bcb9fc974609ae81424f285f05280d90" })
   use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
-  use({ "p00f/nvim-ts-rainbow", commit = "837167f63445821c55e6eed9dbdac1b0b29afa92" })
-  use({ "windwp/nvim-ts-autotag", commit = "0339338316c7e0d62b03191d81cc68ca8101fc02" })
-  use({ "ThePrimeagen/harpoon", commit = "d3d3d22b6207f46f8ca64946f4d781e975aec0fc" })
+  use({ "p00f/nvim-ts-rainbow", commit = "1ec3f880585c644ddd50a51502c59f4e36f03e62" })
+  use({"windwp/nvim-ts-autotag", commit = "fdefe46c6807441460f11f11a167a2baf8e4534b"})
+  --use({ "windwp/nvim-ts-autotag", commit = "0339338316c7e0d62b03191d81cc68ca8101fc02" })
+  use({ "ThePrimeagen/harpoon", commit = "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971" })
   use({ "drybalka/tree-climber.nvim", commit = "9c943b85f44d3064e8f42ee8b3aacad3959a5a75" })
   -- match-up is a plugin that lets you highlight, navigate, and operate on sets
   -- of matching text. It extends vim's % key to language-specific words instead of
@@ -87,44 +86,44 @@ return packer.startup(function(use)
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use({ "lunarvim/darkplus.nvim", commit = "fe67a1a1663e65ac4fbd3e9a18874d6990a4f6e5" })
   -- cmp plugins
-  use({ "hrsh7th/nvim-cmp", commit = "0e65333c7fdc284d53a489ed2cef7219289ea0fe" }) -- The completion plugin
-  use({ "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }) -- buffer completions
-  use({ "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }) -- path completions
-  use({ "hrsh7th/cmp-cmdline", commit = "c36ca4bc1dedb12b4ba6546b96c43896fd6e7252" }) -- cmdline completions
-  use({ "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }) -- snippet completions
+  use({ "hrsh7th/nvim-cmp"}) -- The completion plugin
+  use({ "hrsh7th/cmp-buffer"}) -- buffer completions
+  use({ "hrsh7th/cmp-path"}) -- path completions
+  use({ "hrsh7th/cmp-cmdline"}) -- cmdline completions
+  use({ "saadparwaiz1/cmp_luasnip"}) -- snippet completions
   use({ "hrsh7th/cmp-nvim-lsp"})
   use({ "hrsh7th/cmp-nvim-lua"})
-  use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
+  use({ "RRethy/vim-illuminate" })
 
   -- snippets
-  use({ "L3MON4D3/LuaSnip", commit = "96433350b55794977d1794913b28417550dd1601" }) --snippet engine
-  use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
+  use({ "L3MON4D3/LuaSnip"}) --snippet engine
+  use({ "rafamadriz/friendly-snippets"}) -- a bunch of snippets to use
 
   -- LSP
   use({ "williamboman/mason.nvim", commit = "45606b0e9b01a1565bfc8b57a52ec04f58f5f295" })
   use({ "williamboman/mason-lspconfig.nvim", commit = "b364c98644b53e351d27313dfdab809df7fde1d3" })
   use({ "neovim/nvim-lspconfig", commit = "fc2f44dc6024bddb75b82e471c642ad1f4483094" }) -- enable LSP
-  use({ "williamboman/nvim-lsp-installer", commit = "23820a878a5c2415bfd3b971d1fe3c79e4dd6763" }) -- simple to use language server installer
   use({ "tamago324/nlsp-settings.nvim", commit = "5c3a63fb88eaed15b62e8159ca67fd1d208fbdd0" }) -- language server settings defined in json for
   use({ "jose-elias-alvarez/null-ls.nvim", commit = "c333ecce37ee5f096f17754901e4ec4827041166" }) -- for formatters and linters
   use({ "ray-x/lsp_signature.nvim", commit = "e65a63858771db3f086c8d904ff5f80705fd962b" })
   use({ 'MunifTanjim/prettier.nvim', commit = "f27e94f81c9cd5b0925bf46eabb5570c832bd6a7" })
 
   -- DAP
-  use({ "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" })
-  use({ "rcarriga/nvim-dap-ui", commit = "52f4840cb95e6638f18a74b71b536c3bd12e9fd8" })
-  use({ "theHamsta/nvim-dap-virtual-text", commit = "10368a11d175633f00ee6afb49708e42ae70ae7d" })
+  use({ "mfussenegger/nvim-dap", commit = "0b320f5bd4e5f81e8376f9d9681b5c4ee4483c25" })
+  use({ "rcarriga/nvim-dap-ui", commit = "c8ce83a66deb0ca6f5af5a9f9d5fcc05a6d0f66b" })
+  use({ "theHamsta/nvim-dap-virtual-text", commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4" })
   use({ "nvim-telescope/telescope-dap.nvim", commit = "b4134fff5cbaf3b876e6011212ed60646e56f060" })
 
   -- Telescope
-  use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", commit = "6bddc38c25af7b50f99cb0c035248d7272971810" })
+  use({ "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" })
 
   -- Treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   })
-  use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
+  use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08" })
+  use({"numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67"})
 
   -- Git
   use({ "lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" })
@@ -138,28 +137,12 @@ return packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
-    commit = "c552119ff0c81ff55c8d7900e618612c05d9192e",
-  })
-
-  -- Elixir
-  use({
-    "mhanberg/elixir.nvim",
-    requires = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim" },
-    commit = "3327e15ff46028ef01aa9d908224779c60012687",
   })
 
   use({
     "weilbith/nvim-code-action-menu",
     cmd = "CodeActionMenu",
     commit = "a864a79c8e024d4f5d95915210188c9c3430b160",
-  })
-
-  use("MattesGroeger/vim-bookmarks")
-
-  use({
-    "crusj/bookmarks.nvim",
-    branch = "main",
-    requires = { "kyazdani42/nvim-web-devicons" },
   })
 
   -- Automatically set up your configuration after cloning packer.nvim

@@ -15,10 +15,11 @@ configs.setup {
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
     disable_virtual_text = true,
-    disable = { "html" }, -- optional, list of language that will be disabled
-    include_match_words = true
+    disable = { "html", "jsx" }, -- optional, list of language that will be disabled
+    include_match_words = false
   },
   highlight = {
+    use_language_tree = true,
     enable = true, -- false will disable the whole extension
     -- disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
@@ -30,7 +31,7 @@ configs.setup {
   },
   autotag = {
     enable = true,
-    filetypes = {"html", "heex", "xml", "typescriptreact"}
+    filetypes = { "html", "heex", "xml", "typescriptreact" }
   },
   incremental_selection = {
     enable = true,
