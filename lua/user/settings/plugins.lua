@@ -41,13 +41,12 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
-  use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
+  use({ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" }) -- Have packer manage itself
   use({ "nvim-lua/popup.nvim", commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac" }) -- An implementation of the Popup API from vim in Neovim
-  use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used ny lots of plugins
+  use({ "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" }) -- Useful lua functions used ny lots of plugins
   use({ "windwp/nvim-autopairs", commit = "4a95b3982be7397cd8e1370d1a09503f9b002dbf" }) -- Autopairs, integrates with both cmp and treesitter
   use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }) -- Easily comment stuff
-  use({ "kyazdani42/nvim-web-devicons", commit = "2d02a56189e2bde11edd4712fea16f08a6656944" })
-  use({ "kyazdani42/nvim-tree.lua", commit = "79258f1d670277016523e13c0a88daa25070879f" })
+  use({ "kyazdani42/nvim-web-devicons", commit = "a8cf88cbdb5c58e2b658e179c4b2aa997479b3da" })
   use({ "akinsho/bufferline.nvim", commit = "88c742f4af988c98aee5ac1c92f056905c636aae" })
   use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
   use({ "nvim-lualine/lualine.nvim", commit = "5113cdb32f9d9588a2b56de6d1df6e33b06a554a" })
@@ -57,7 +56,7 @@ return packer.startup(function(use)
   use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
   use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
   use({ "antoinemadec/FixCursorHold.nvim", commit = "1bfb32e7ba1344925ad815cb0d7f901dbc0ff7c1" }) -- This is needed to fix lsp doc highlight
-  use({ "folke/which-key.nvim", commit = "bd4411a2ed4dd8bb69c125e339d837028a6eea71" })
+  use({ "folke/which-key.nvim", commit = "6885b669523ff4238de99a7c653d47b081b5506d" })
   use({ "phaazon/hop.nvim", commit = "a3cf6684bcb9fc974609ae81424f285f05280d90" })
   use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
   use({ "p00f/nvim-ts-rainbow", commit = "837167f63445821c55e6eed9dbdac1b0b29afa92" })
@@ -67,7 +66,7 @@ return packer.startup(function(use)
   -- match-up is a plugin that lets you highlight, navigate, and operate on sets
   -- of matching text. It extends vim's % key to language-specific words instead of
   --just single characters.
-  use({ "andymass/vim-matchup", commit = "976ebfe61b407d0a75d87b4a507bf9ae4ffffbaa" })
+  use({ "andymass/vim-matchup", commit = "3fa1b2283e957784922fe891de361a2342b90bca" })
   use({ "karb94/neoscroll.nvim", commit = "71c8fadd60362383e5e817e95f64776f5e2737d8" })
   use({ "nacro90/numb.nvim", commit = "453c50ab921fa066fb073d2fd0f826cb036eaf7b" })
   use({ "tversteeg/registers.nvim", commit = "f354159d34bc17553ad772c633fd7caff8ecb35c" })
@@ -76,7 +75,8 @@ return packer.startup(function(use)
   use({ "tpope/vim-surround", commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea" })
   use({ "stevearc/dressing.nvim", commit = "af179837e1cdddfb164f0296883951b2255c46d2" })
   use({ "simrat39/symbols-outline.nvim", commit = "15ae99c27360ab42e931be127d130611375307d5" })
-  use({ "lunarvim/horizon.nvim", commit = "eb21506d55c39f286fe54bf4eac6a7f7f4a3a1ce" })
+  use({ "lunarvim/horizon.nvim", commit = "0a2b44d9a8debfbefb104b58635e689c88be6848" })
+  use("nathom/filetype.nvim")
 
   use({
     "folke/trouble.nvim",
@@ -92,8 +92,8 @@ return packer.startup(function(use)
   use({ "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }) -- path completions
   use({ "hrsh7th/cmp-cmdline", commit = "c36ca4bc1dedb12b4ba6546b96c43896fd6e7252" }) -- cmdline completions
   use({ "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }) -- snippet completions
-  use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
-  use({ "hrsh7th/cmp-nvim-lua", commit = "44acf47b28ff77b4b18d69d5b51b03184c87ccdf" })
+  use({ "hrsh7th/cmp-nvim-lsp"})
+  use({ "hrsh7th/cmp-nvim-lua"})
   use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
 
   -- snippets
@@ -101,14 +101,14 @@ return packer.startup(function(use)
   use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
 
   -- LSP
-  use({ "williamboman/mason.nvim", commit = "49c7826ebca62374df44b20fcd0df7a287d4511d" })
-  use({ "williamboman/mason-lspconfig.nvim", commit = "f0d0d62273b76fa0ef5154ce9d05b1a2a083e79b" })
-  use({ "neovim/nvim-lspconfig", commit = "d57b24c3f46c92cf7e1d93919678565ae49e1e23" }) -- enable LSP
-  use({ "williamboman/nvim-lsp-installer", commit = "5a0bf929eefad999e92963ee227c23a804cf0788" }) -- simple to use language server installer
-  use({ "tamago324/nlsp-settings.nvim", commit = "70eb4c351f0d4f6c19fbfc50aab680baf61c81b6" }) -- language server settings defined in json for
-  use({ "jose-elias-alvarez/null-ls.nvim", commit = "17dd2c95a7412e97bf9752a5a5cca95581baf361" }) -- for formatters and linters
-  use({ "ray-x/lsp_signature.nvim", commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9" })
-  use({ 'MunifTanjim/prettier.nvim', commit = "9d30c46b6e16d3cb91cc763e485065fe720edd52" })
+  use({ "williamboman/mason.nvim", commit = "45606b0e9b01a1565bfc8b57a52ec04f58f5f295" })
+  use({ "williamboman/mason-lspconfig.nvim", commit = "b364c98644b53e351d27313dfdab809df7fde1d3" })
+  use({ "neovim/nvim-lspconfig", commit = "fc2f44dc6024bddb75b82e471c642ad1f4483094" }) -- enable LSP
+  use({ "williamboman/nvim-lsp-installer", commit = "23820a878a5c2415bfd3b971d1fe3c79e4dd6763" }) -- simple to use language server installer
+  use({ "tamago324/nlsp-settings.nvim", commit = "5c3a63fb88eaed15b62e8159ca67fd1d208fbdd0" }) -- language server settings defined in json for
+  use({ "jose-elias-alvarez/null-ls.nvim", commit = "c333ecce37ee5f096f17754901e4ec4827041166" }) -- for formatters and linters
+  use({ "ray-x/lsp_signature.nvim", commit = "e65a63858771db3f086c8d904ff5f80705fd962b" })
+  use({ 'MunifTanjim/prettier.nvim', commit = "f27e94f81c9cd5b0925bf46eabb5570c832bd6a7" })
 
   -- DAP
   use({ "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" })
@@ -123,12 +123,11 @@ return packer.startup(function(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    commit = "22824614163c54ef5d366b15c8685e24d33763",
   })
   use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
 
   -- Git
-  use({ "lewis6991/gitsigns.nvim", commit = "3543443eb3856fbe4a9d70f3fe8dc73e007199a1" })
+  use({ "lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" })
 
   -- Neo-Tree
   use({

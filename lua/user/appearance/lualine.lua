@@ -264,6 +264,7 @@ local filename = {
 local current_signature = {
   function()
     local buf_ft = vim.bo.filetype
+    buf_ft = "lua"
 
     if buf_ft == "toggleterm" or buf_ft == "TelescopePrompt" then
       return ""

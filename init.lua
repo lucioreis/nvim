@@ -3,6 +3,7 @@ if ok then
   impatient.enable_profile()
 end
 
+require("user.settings.plugins")
 require("user.settings.options")
 
 --Appearance
@@ -11,12 +12,11 @@ require("user.appearance.colorscheme")
 require("user.appearance.dressing")
 require("user.appearance.indentline")
 require("user.appearance.lualine")
-require("user.appearance.matchup")
+-- require("user.appearance.matchup")
 require("user.appearance.tsrainbow")
 
 --Commands
 require("user.commands.autocommands")
-
 --Debugger
 require("user.debugger.dap")
 
@@ -25,10 +25,10 @@ require("user.edit.autopairs")
 require("user.edit.cmp")
 require("user.edit.comment")
 -- require("user.edit.coq")
+require("user.edit.treesitter")
 require("user.edit.registers")
 require("user.edit.renamer")
 require("user.edit.surround")
-require("user.edit.treesitter")
 require("user.edit.autotag")
 
 --GIT
@@ -36,11 +36,6 @@ require("user.git.gitsigns")
 
 --LSP
 require("user.lsp")
-require("user.lsp.mason")
-local saga = require("lspsaga")
-        saga.init_lsp_saga({
-            -- your configuration
-        })
 
 --NAVIGATION
 require("user.navigation.alpha")
@@ -52,14 +47,13 @@ require("user.navigation.neo-tree")
 require("user.navigation.neoscroll")
 require("user.navigation.numb") -- Peek lines in a non-obtrusive way
 --require("user.navigation.nvim-tree")
-require("user.navigation.project")
 require("user.navigation.telescope")
+require("user.navigation.project")
 --require("user.navigation.bookmarks")
 require("user.navigation.harpoon")
 require("user.navigation.trouble")
 
 --SETTINGS
-require("user.settings.plugins")
 require("user.settings.session-manager")
 require("user.settings.toggleterm")
 require("user.settings.keymaps")

@@ -13,7 +13,7 @@ local servers = {
 	"jsonls",
 	"tailwindcss",
 	--"cssmodules_ls",
-	"emmet_ls",
+	--"emmet_ls",
 	"html",
 	"sumneko_lua",
 	"tsserver",
