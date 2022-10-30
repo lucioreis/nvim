@@ -149,12 +149,12 @@ keymap("n", "-", function()
 end)
 
 -- Bookmarks
-keymap("n", "mm", "<CMD>BookmarkToggle<CR>", opts)
-keymap("n", "mk", "<CMD>BookmarkNext<CR>", opts)
-keymap("n", "mj", "<CMD>BookmarkPrev<CR>", opts)
-keymap("n", "ma", "<CMD>BookmarkShowAll<CR>", opts)
-keymap("n", "mc", "<CMD>BookmarkClear<CR>", opts)
-keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts)
+--[[ keymap("n", "mm", "<CMD>BookmarkToggle<CR>", opts) ]]
+--[[ keymap("n", "mk", "<CMD>BookmarkNext<CR>", opts) ]]
+--[[ keymap("n", "mj", "<CMD>BookmarkPrev<CR>", opts) ]]
+--[[ keymap("n", "ma", "<CMD>BookmarkShowAll<CR>", opts) ]]
+--[[ keymap("n", "mc", "<CMD>BookmarkClear<CR>", opts) ]]
+--[[ keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts) ]]
 
 -- Trouble
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)

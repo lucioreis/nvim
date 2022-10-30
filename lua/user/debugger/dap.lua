@@ -62,6 +62,7 @@ dap.configurations.typescriptreact = {
   reAttach = true,
   url = 'http://localhost:3000/',
   webRoot = '${workspaceFolder}',
+  taskArgs = {"-p dev-edition-default"},
   firefoxExecutable = '/usr/bin/firefox-developer-edition',
   }
 }

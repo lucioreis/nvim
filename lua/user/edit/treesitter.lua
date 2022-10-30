@@ -12,6 +12,7 @@ configs.setup {
   autopairs = {
     enable = true,
   },
+  disable = {"help"},
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
     disable_virtual_text = true,

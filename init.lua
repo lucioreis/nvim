@@ -12,6 +12,7 @@ require("user.appearance.colorscheme")
 require("user.appearance.dressing")
 require("user.appearance.indentline")
 require("user.appearance.lualine")
+require("user.appearance.fidget")
 -- require("user.appearance.matchup")
 require("user.appearance.tsrainbow")
 
