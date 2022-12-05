@@ -118,6 +118,7 @@ keymap(
 	[[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
 	opts
 )
+keymap("n", "<F8>", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>", opts)
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 keymap("n", "[d", vim.diagnostic.goto_prev, opts)
 keymap("n", "]d", vim.diagnostic.goto_prev, opts)
@@ -158,7 +159,7 @@ end)
 
 -- Trouble
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
-keymap("n", "", "<CMD>TroubleToggle<CR>", opts)
+keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
 keymap("n", "trt", "<CMD>TroubleReset<CR>", opts)
 keymap("n", "gr", "<CMD>Trouble lsp_references<CR>", opts)
 
@@ -173,3 +174,4 @@ if is_ok then
 	keymap("n", "<c-k>", tree_climber.swap_prev, opts)
 	keymap("n", "<c-j>", tree_climber.swap_next, opts)
 end
+
