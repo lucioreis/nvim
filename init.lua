@@ -23,7 +23,6 @@ require("user.debugger.dap")
 
 --Edit
 require("user.edit.autopairs")
-require("user.edit.cmp")
 require("user.edit.comment")
 -- require("user.edit.coq")
 require("user.edit.treesitter")
@@ -37,6 +36,7 @@ require("user.git.gitsigns")
 
 --LSP
 require("user.lsp")
+require("user.edit.cmp")
 
 --NAVIGATION
 require("user.navigation.alpha")

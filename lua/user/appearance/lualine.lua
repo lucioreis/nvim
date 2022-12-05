@@ -4,10 +4,10 @@ if not status_ok then
   return
 end
 
--- local status_theme_ok, theme = pcall(require, "lualine.themes.onedarker_alt")
--- if status_theme_ok then
---   return
--- end
+ --[[ local status_theme_ok, theme = pcall(require, "horizon") ]]
+ --[[ if status_theme_ok then ]]
+ --[[   return  ]]
+ --[[ end ]]
 
 -- check if value in table
 local function contains(t, value)
@@ -20,7 +20,7 @@ local function contains(t, value)
 end
 
 local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
-local sl_hl_sep = vim.api.nvim_get_hl_by_name("StatusLineSeparator", true)
+--[[ local sl_hl_sep = vim.api.nvim_get_hl_by_name("StatusLineSeparator", true) ]]
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53",  bg = "#32363e"})-- bg = sl_hl_sep.foreground })
 vim.api.nvim_set_hl(0, "SLTermIcon", { fg = "#b668cd", bg = "#32363e" })

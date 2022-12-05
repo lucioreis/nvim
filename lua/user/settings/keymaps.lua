@@ -46,8 +46,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- keymap("n", "<C-v>", "<C-w>v", opts)
 
 -- Navigate buffers
-keymap("n", "<TAB>", ":bnext<CR>", opts)
-keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
+--[[ keymap("n", "<TAB>", ":bnext<CR>", opts) ]]
+--[[ keymap("n", "<S-TAB>", ":bprevious<CR>", opts) ]]
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>", opts)
@@ -158,6 +158,7 @@ end)
 
 -- Trouble
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
+keymap("n", "", "<CMD>TroubleToggle<CR>", opts)
 keymap("n", "trt", "<CMD>TroubleReset<CR>", opts)
 keymap("n", "gr", "<CMD>Trouble lsp_references<CR>", opts)
 
