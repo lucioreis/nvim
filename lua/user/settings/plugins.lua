@@ -91,7 +91,6 @@ return packer.startup(function(use)
   use({ "RRethy/vim-illuminate" })
 
   -- snippets
-  use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
   use({ "L3MON4D3/LuaSnip" }) --snippet engine
   use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
@@ -114,7 +113,8 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-cmdline' }, -- cmdline completions
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
-  --[[ use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions ]]
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+      { "saadparwaiz1/cmp_luasnip" } -- snippet completions
 
     }
   })
@@ -159,7 +159,7 @@ return packer.startup(function(use)
     commit = "a864a79c8e024d4f5d95915210188c9c3430b160",
   })
 
-  use({"mbbill/undotree", commit="bd60cb564e3c3220b35293679669bb77af5f389d"})
+  use({ "mbbill/undotree", commit = "bd60cb564e3c3220b35293679669bb77af5f389d" })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
