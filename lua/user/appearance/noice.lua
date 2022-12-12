@@ -2,7 +2,7 @@ local ok, noice = pcall(require, "noice")
 if not ok then
   return
 end
-
+-- " "
 noice.setup({
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -30,6 +30,10 @@ noice.setup({
         width = 60,
         height = "auto",
       },
+      border = {
+        style = "single",
+        color = { fg = "#FF0000", bg = "#FF0000" }
+      }
     },
     popupmenu = {
       relative = "editor",
@@ -41,13 +45,15 @@ noice.setup({
         width = 60,
         height = 10,
       },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
       win_options = {
         winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
       },
+    },
+  },
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
     },
   },
 })

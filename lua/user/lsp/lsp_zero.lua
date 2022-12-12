@@ -36,11 +36,17 @@ lsp.set_preferences({
   }
 })
 lsp.on_attach(function(client, bufnr)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
+  local illuminate_ok, illuminate = pcall(require, "illuminate")
+  if not illuminate_ok then
     return
   end
   illuminate.on_attach(client)
+  local trouble_ok, _ = pcall(require, "trouble")
+  if trouble_ok then
+    vim.keymap.set("n", "gr", "<CMD>Trouble lsp_references<CR>", { silent = true, buffer = bufnr })
+    vim.keymap.set("n", "gi", "<CMD>Trouble lsp_implementations<CR>", { silent = true, buffer = bufnr })
+    vim.keymap.set("n", "go", "<CMD>Trouble lsp_type_definitions<CR>", { silent = true, buffer = bufnr })
+  end
   -- more code  ...
 end)
 

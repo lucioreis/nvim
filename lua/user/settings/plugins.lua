@@ -76,9 +76,11 @@ return packer.startup(function(use)
   use({ "stevearc/dressing.nvim", commit = "af179837e1cdddfb164f0296883951b2255c46d2" })
   use({ "simrat39/symbols-outline.nvim", commit = "15ae99c27360ab42e931be127d130611375307d5" })
   use({ "lunarvim/horizon.nvim", commit = "0a2b44d9a8debfbefb104b58635e689c88be6848" })
-  use 'folke/tokyonight.nvim'
   use("nathom/filetype.nvim")
-  use('Maan2003/lsp_lines.nvim') -- is a simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code.
+  --[[ use('Maan2003/lsp_lines.nvim') -- is a simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code. ]]
+  use({ "TimUntersberger/neogit",
+    requires = "sindrets/diffview.nvim",
+    commit = "66030fc1c3b7b6d5bc31ece188bc472ee2d91ee1" })
   use("folke/neodev.nvim") -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
   use({ "folke/noice.nvim" }) -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
 

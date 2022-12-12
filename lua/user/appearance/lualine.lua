@@ -4,10 +4,10 @@ if not status_ok then
   return
 end
 
- --[[ local status_theme_ok, theme = pcall(require, "horizon") ]]
- --[[ if status_theme_ok then ]]
- --[[   return  ]]
- --[[ end ]]
+--[[ local status_theme_ok, theme = pcall(require, "horizon") ]]
+--[[ if status_theme_ok then ]]
+--[[   return  ]]
+--[[ end ]]
 
 -- check if value in table
 local function contains(t, value)
@@ -22,9 +22,9 @@ end
 local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
 --[[ local sl_hl_sep = vim.api.nvim_get_hl_by_name("StatusLineSeparator", true) ]]
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53",  bg = "#32363e"})-- bg = sl_hl_sep.foreground })
+vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#32363e" }) -- bg = sl_hl_sep.foreground })
 vim.api.nvim_set_hl(0, "SLTermIcon", { fg = "#b668cd", bg = "#32363e" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf",  bg ="#32363e" , bold = false})-- bg = sl_hl_sep.foreground, bold = false })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = "#32363e", bold = false }) -- bg = sl_hl_sep.foreground, bold = false })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#b668cd", bg = "#32363e" })
 vim.api.nvim_set_hl(0, "SLFileName", { fg = "#b668cd", bg = "#32363e" })
 vim.api.nvim_set_hl(0, "SLLocation", { fg = "#519fdf", bg = "#32363e" })
@@ -162,9 +162,8 @@ local diff = {
   cond = hide_in_width_60,
   -- separator = "%#SLSeparator#" .. "│ " .. "%*",
   -- separator = "%#SLSeparator#" .. " " .. "%*",
-  color = function ()
+  color = function()
     return { bg = "#32363e" }
-    
   end
 }
 
@@ -186,8 +185,8 @@ local filetype = {
       "nil",
     }
 
-    local return_val = function(str)
-      return hl_str(" ", "SLSep") .. hl_str(str, "SLFT") .. hl_str("", "SLSep")
+    local return_val = function(string)
+      return hl_str(" ", "SLSep") .. hl_str(string, "SLFT") .. hl_str("", "SLSep")
     end
 
     if str == "TelescopePrompt" then
@@ -224,7 +223,7 @@ local branch = {
   icons_enabled = true,
   icon = "%#SLGitIcon#" .. " " .. "%*" .. "%#SLBranchName#",
   -- color = "Constant",
-    padding = 0,
+  padding = 0,
   -- cond = hide_in_width_100,
   fmt = function(str)
     if str == "" or str == nil then
@@ -234,8 +233,8 @@ local branch = {
     return str
   end,
   colored = true,
-  color = function ()
-   return {bg = "#32363e"}
+  color = function()
+    return { bg = "#32363e" }
   end,
 
 }
@@ -252,13 +251,26 @@ local progress = {
 }
 
 local filename = {
-  function ()
+  function()
     return vim.fn.expand("%:t")
   end,
   color = function()
     return { bg = "#32363e" }
   end,
   padding = 0,
+}
+
+local macromode = {
+  function()
+    local recording = require("noice").api.statusline.mode.get()
+    return string.sub(recording, -2, -1)
+  end,
+  fmt = function(str)
+    return hl_str("", "SLSep") .. hl_str(str, "SLLocation") .. hl_str("", "SLSep")
+  end,
+  cond = require("noice").api.statusline.mode.has,
+  color = { fg = "#ff9e64", bg = "#32363e" },
+
 }
 
 local current_signature = {
@@ -334,7 +346,7 @@ local spaces = {
   -- cond = hide_in_width_100,
 }
 
-local lanuage_server = {
+local language_server = {
   function()
     local buf_ft = vim.bo.filetype
     local ui_filetypes = {
@@ -362,7 +374,7 @@ local lanuage_server = {
       end
     end
 
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_active_clients()
     local client_names = {}
     local copilot_active = false
 
@@ -443,9 +455,9 @@ lualine.setup {
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { left_pad, mode, branch, diff, right_pad },
+    lualine_a = { left_pad, mode, branch, diff, right_pad, macromode },
     lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
-    lualine_c = {left_pad, filename, current_signature, right_pad},
+    lualine_c = { left_pad, filename, current_signature, right_pad },
     -- lualine_c = { current_signature },
     -- lualine_x = { diff, spaces, "encoding", filetype },
     -- lualine_x = { diff, lanuage_server, spaces, filetype },

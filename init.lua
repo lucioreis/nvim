@@ -32,6 +32,8 @@ require("user.edit.autotag")
 
 --GIT
 require("user.git.gitsigns")
+require("user.git.diffview")
+require("user.git.neogit")
 
 --LSP
 require("user.lsp")
