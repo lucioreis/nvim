@@ -1,0 +1,31 @@
+qa\ L 1
+wsz L 2
+edx L 3
+rfc L 4
+tgv L 4
+
+pç. R 1
+ol, R 2
+ikm R 3
+ujn R 4
+yhb R 4
+
+
+
+local border = {
+      {"🭽", "FloatBorder"},
+      
+      {"▔", "FloatBorder"},
+
+      {"🭾", "FloatBorder"},
+
+      {"▕", "FloatBorder"},
+
+      {"🭿", "FloatBorder"},
+
+      {"▁", "FloatBorder"},
+
+      {"🭼", "FloatBorder"},
+
+      {"▏", "FloatBorder"},
+}

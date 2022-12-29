@@ -19,8 +19,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = _general_settings,
 })
 
-
-
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	pattern = { "NvimTree" },
 --   callback = function()

@@ -17,10 +17,6 @@ vim.g.maplocalleader = " "
 
 -- Get help for word under cursor
 keymap({ "n", "v", "i" }, "<F1>", "<ESC>:h <C-R>=expand('<cword>')<CR><CR>", opts)
-keymap({ "n", "v", "i" }, "<S-F1>", "<ESC><cmd>Telescope help_tags<CR>", opts)
-keymap({ "n", "v", "i" }, "<S-F1>", function()
-	require("telescope.builtin").help_tags(require("telescope.themes").get_dropdown({ previewer = false }))
-end, opts)
 
 -- Normal --
 -- Press Enter to save
@@ -91,32 +87,39 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Custom
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 
-keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
+local isTelescopeOk, telescope = pcall(require, 'telescope.builtin')
+if isTelescopeOk then
+  keymap({ "n", "v", "i" }, "<S-F1>", telescope.help_tags, opts)
+  keymap({ "n", "v", "i" }, "<S-F1>", function()
+    telescope.help_tags(require("telescope.themes").get_dropdown({ previewer = false }))
+  end, opts)
+  keymap("n", "<F3>", telescope.resume, opts)
+  keymap("n", "<F5>", telescope.commands, opts)
+  keymap(
+    { "n", "i" },
+    "<C-f>",
+    function()
+      telescope.current_buffer_fuzzy_find({ prompt_position = "top", sorting_strategy = "ascending" })
+    end,
+    opts
+  )
+  keymap("n", "<C-p>", function()
+    telescope.find_files(require("telescope.themes").get_dropdown({ previewer = false }))
+  end,
+    opts)
+  keymap("n", "-", function()
+    telescope.buffers(
+      require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" })
+    )
+  end, opts)
+end
+
 keymap(
-	{ "n", "i" },
-	"<C-f>",
-	"<cmd>Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending<CR>",
-	opts
-)
-
--- keymap({ "n", "i" }, "<C-f>", function()
---   local word = vim.fn.expand('<cword>')
--- 	vim.cmd([[Telescope current_buffer_fuzzy_find prompt_position=top sorting_strategy=ascending starting_mode=normal<CR>]])
---   vim.schedule(function ()
---     vim.cmd
---   end)
--- end, opts)
-
-keymap("n", "<C-p>", function()
-	require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))
-end, opts)
-
-keymap(
-	"n",
-	"<F6>",
-	[[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
-	opts
+  "n",
+  "<F6>",
+  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]]
+  ,
+  opts
 )
 keymap("n", "<F8>", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>", opts)
 -- keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
@@ -134,44 +137,29 @@ keymap("n", "f", "<cmd>HopChar1CurrentLineAC<CR>", opts)
 
 -- NeoTree --
 keymap("n", "=", ":NeoTreeFloatToggle buffers<CR>", opts)
+
+-- Harpoon --
 keymap("n", "<leader>b", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 for i = 1, 9, 1 do
-	keymap("n", "<M-" .. i .. ">", "<cmd>lua require('harpoon.ui').nav_file(" .. i .. ")<cr>", opts)
+  keymap("n", "<M-" .. i .. ">", "<cmd>lua require('harpoon.ui').nav_file(" .. i .. ")<cr>", opts)
 end
-keymap("n", "<M-n>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", opts)
-keymap("n", "<M-p>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", opts)
-keymap("n", "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts)
+keymap("n", "<M-n>", require('harpoon.ui').nav_next, opts)
+keymap("n", "<M-p>", require('harpoon.ui').nav_prev, opts)
+keymap("n", "<leader>m", require('harpoon.mark').add_file, opts)
 
--- keymap("n", "-", "<CMD>JABSOpen<CR>", opts)
-keymap("n", "-", function()
-	require("telescope.builtin").buffers(
-		require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" })
-	)
-end)
-
--- Bookmarks
---[[ keymap("n", "mm", "<CMD>BookmarkToggle<CR>", opts) ]]
---[[ keymap("n", "mk", "<CMD>BookmarkNext<CR>", opts) ]]
---[[ keymap("n", "mj", "<CMD>BookmarkPrev<CR>", opts) ]]
---[[ keymap("n", "ma", "<CMD>BookmarkShowAll<CR>", opts) ]]
---[[ keymap("n", "mc", "<CMD>BookmarkClear<CR>", opts) ]]
---[[ keymap("n", "mx", "<CMD>BookmarkClearAll<CR>", opts) ]]
-
--- Trouble
+-- Trouble --
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
 keymap("n", "tr", "<CMD>TroubleToggle<CR>", opts)
 keymap("n", "trt", "<CMD>TroubleReset<CR>", opts)
-keymap("n", "gr", "<CMD>Trouble lsp_references<CR>", opts)
 
---Tree Climber
+--Tree Climber --
 local is_ok, tree_climber = pcall(require, "tree-climber")
 if is_ok then
-	keymap({ "n", "v", "o" }, "H", tree_climber.goto_parent, opts)
-	keymap({ "n", "v", "o" }, "L", tree_climber.goto_child, opts)
-	keymap({ "n", "v", "o" }, "<C-j>", tree_climber.goto_next, opts)
-	keymap({ "n", "v", "o" }, "<C-k>", tree_climber.goto_prev, opts)
-	keymap({ "v", "o" }, "in", tree_climber.select_node, opts)
-	keymap("n", "<c-k>", tree_climber.swap_prev, opts)
-	keymap("n", "<c-j>", tree_climber.swap_next, opts)
+  keymap({ "n", "v", "o" }, "H", tree_climber.goto_parent, opts)
+  keymap({ "n", "v", "o" }, "L", tree_climber.goto_child, opts)
+  keymap({ "n", "v", "o" }, "<C-j>", tree_climber.goto_next, opts)
+  keymap({ "n", "v", "o" }, "<C-k>", tree_climber.goto_prev, opts)
+  keymap({ "v", "o" }, "in", tree_climber.select_node, opts)
+  keymap("n", "<c-k>", tree_climber.swap_prev, opts)
+  keymap("n", "<c-j>", tree_climber.swap_next, opts)
 end
-

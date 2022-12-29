@@ -1,10 +1,9 @@
-local isNeodevOk, neodev = pcall(require, "neodev")
+--local isNeodevOk, neodev = pcall(require, "neodev")
 
-if isNeodevOk then
-  neodev.setup()
-end
+--if isNeodevOk then
+  --neodev.setup()
+--end
 
-require "lsp_signature"
 require("user.lsp.mason")
 require("user.lsp.lsp_zero")
 --require "user.lsp.null-ls"

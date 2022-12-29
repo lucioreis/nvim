@@ -7,14 +7,11 @@ local servers = {
   "cssls",
   "jsonls",
   "tailwindcss",
-  --"cssmodules_ls",
-  --"emmet_ls",
   "html",
   "sumneko_lua",
   "tsserver",
   "yamlls",
   "bashls",
-  --"graphql",
   "prismals",
 }
 
@@ -23,7 +20,7 @@ lsp.preset('recommended')
 lsp.set_preferences({
   suggest_lsp_servers = true,
   setup_servers_on_start = true,
-  set_lsp_keymaps = true,
+  set_lsp_keymaps = false,
   configure_diagnostics = true,
   cmp_capabilities = true,
   manage_nvim_cmp = false,
@@ -37,55 +34,46 @@ lsp.set_preferences({
 })
 lsp.on_attach(function(client, bufnr)
   local illuminate_ok, illuminate = pcall(require, "illuminate")
-  if not illuminate_ok then
-    return
+  if illuminate_ok then
+    illuminate.on_attach(client)
   end
-  illuminate.on_attach(client)
-  local trouble_ok, _ = pcall(require, "trouble")
-  if trouble_ok then
-    vim.keymap.set("n", "gr", "<CMD>Trouble lsp_references<CR>", { silent = true, buffer = bufnr })
-    vim.keymap.set("n", "gi", "<CMD>Trouble lsp_implementations<CR>", { silent = true, buffer = bufnr })
-    vim.keymap.set("n", "go", "<CMD>Trouble lsp_type_definitions<CR>", { silent = true, buffer = bufnr })
+  local opts = { silent = true, buffer = bufnr }
+  local isTelescopeOk, telescope_builtin = pcall(require, "telescope.builtin")
+  if isTelescopeOk then
+    vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, opts)
+    vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, opts)
+    vim.keymap.set("n", "go", telescope_builtin.lsp_type_definitions, opts)
+    vim.keymap.set("n", "gr", telescope_builtin.lsp_references, opts)
+  else
+    vim.keymap.set("n", "gd", vim.lsp.buf.lsp_definitions, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.lsp_implementations, opts)
+    vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   end
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, opts)
   -- more code  ...
 end)
 
 lsp.ensure_installed(servers)
 
-local lsp_opts = {
-  flags = {
-    debounce_text_changes = 150,
-  },
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true
-        }
-      }
-    }
-  },
-}
+--[[ lsp.configure("", { ]]
+--[[   flags = { ]]
+--[[     debounce_text_changes = 150, ]]
+--[[   }, ]]
+--[[   on_attach = function(client, bufnr) ]]
+--[[   end, ]]
+--[[   capabilities = { ]]
+--[[     textDocument = { ]]
+--[[       completion = { ]]
+--[[         completionItem = { ]]
+--[[           snippetSupport = false, ]]
+--[[         } ]]
+--[[       } ]]
+--[[     } ]]
+--[[   }, ]]
+--[[ }) ]]
 
-for _, server in ipairs(servers) do
-  lsp.configure(server, lsp_opts)
-end
-
-lsp.configure('cssls', {
-  flags = {
-    debounce_text_changes = 150,
-  },
-  on_attach = function(client, bufnr)
-  end,
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true,
-        }
-      }
-    }
-  },
-})
-
+lsp.nvim_workspace()
 lsp.setup()

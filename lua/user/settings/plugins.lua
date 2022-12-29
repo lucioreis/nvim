@@ -89,9 +89,6 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     commit = "da61737d860ddc12f78e638152834487eabf0ee5",
   })
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use({ "lunarvim/darkplus.nvim", commit = "fe67a1a1663e65ac4fbd3e9a18874d6990a4f6e5" })
   -- cmp plugins
   use({ "RRethy/vim-illuminate" })
 
@@ -101,7 +98,6 @@ return packer.startup(function(use)
 
   -- LSP
   use({ "jose-elias-alvarez/null-ls.nvim", commit = "c51978f546a86a653f4a492b86313f4616412cec" }) -- for formatters and linters
-  use({ "ray-x/lsp_signature.nvim", commit = "136d0eb5956c5a874c506007606f3ad022df64e2" })
   use({ 'MunifTanjim/prettier.nvim', commit = "918b99f5ddd7a56395fd393767ab6a3c15a50789" })
   use({
     'VonHeikemen/lsp-zero.nvim',
@@ -141,6 +137,10 @@ return packer.startup(function(use)
     run = ":TSUpdate",
     commit = "c6a5a412831a967acda8f45072763e2783e9505b"
   })
+  use { -- Additional text objects via treesitter
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
   use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08" })
   use({ "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" })
 

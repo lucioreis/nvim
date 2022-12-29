@@ -36,9 +36,9 @@ require("user.git.diffview")
 require("user.git.neogit")
 
 --LSP
+require('user.appearance.noice')
 require("user.lsp")
 require("user.edit.cmp")
-require('user.appearance.noice')
 
 --NAVIGATION
 require("user.navigation.alpha")
@@ -61,47 +61,3 @@ require("user.settings.session-manager")
 require("user.settings.toggleterm")
 require("user.settings.keymaps")
 require("user.settings.whichkey")
-
--- local icons = require "nvim-nonicons"
--- icons.get("file")
-
--- --in case need to remember how to get filetype
-
---lua =vim.bo.filetype
--- local create_little_window = function(messages)
---   local msg_lines = #messages
---
---   local msg_width = 0
---   for _, v in ipairs(messages) do
---     msg_width = math.max(msg_width, #v + 1)
---   end
---
---   local ui = vim.api.nvim_list_uis()[1]
---   local ui_width = ui.width
---
---   local win_height = math.min(50, msg_lines)
---   local win_width = math.min(150, msg_width) + 5
---
---   return vim.api.nvim_open_win(bufnr, false, {
---     relative = "editor",
---     style = "minimal",
---     height = win_height,
---     width = win_width,
---     -- row = ui_height - win_height - 10,
---     row = 1,
---     col = ui_width - win_width - 2,
---   })
--- end
---
--- local win = create_little_window({"Comecou!"})
---
--- require("nvim-ts-autotag").setup{
---   enable = true,
---   filetypes = {"heex"}
--- }
--- require'nvim-treesitter.configs'.setup {
---   autotag = {
---     enable = true,
---     filetypes = { "heex"},
---   }
--- }
